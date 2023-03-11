@@ -18,7 +18,25 @@ Amount = 30 x 50 + (50-30) x 40 = 2300*/
 
 #include <stdio.h>
 
+#define firstKms 30    // first km limit
+#define firstKmRate 50 // cost per km in first kms
+#define afterkmRate 40 // cost per km in after
+
 int main() {
-  
+  float dis = 0, amount = 0;
+
+  printf("Distance -> ");
+  scanf("%f", &dis);
+
+  if (dis <= firstKms) {
+    amount = dis * firstKmRate;
+    printf("amount = %.1f * %d = %.0f\n", dis, firstKmRate, amount);
+
+  } else if (dis > firstKms) {
+    amount = (firstKms * firstKmRate) + ((dis - firstKms) * afterkmRate);
+    printf("amount = %d * %d + (%.1f-%d) * %d = %.0f\n", firstKms, firstKmRate,
+           dis, firstKms, afterkmRate, amount);
+  }
+
   return 0;
 }
